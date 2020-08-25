@@ -7,9 +7,13 @@ var userSchema = new Schema({
         type: String,
         lowercase: true,
         trim: true,
-        required: true
+        required: [true, 'Username is required.'],
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Username must be a valid email address']
     },
-    password: { type: String, required: true }
+    password: {
+        type: String,
+        required: [true, 'Password is required.']
+    }
 }, {
     timestamps: true
 });
